@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Students</title>
+    <style>
+        body {
+            font-family: "Sarabun", "Segoe UI", Tahoma, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #1c1c1c;
+            margin-bottom: 40px;
+        }
+
+        .student-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .student-card {
+            background-color: #ffffff;
+            border-left: 6px solid #003366;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+        }
+
+        .student-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+            border: 2px solid #003366;
+        }
+
+        .student-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .student-info .name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #003366;
+        }
+
+        .student-info .dob,
+        .student-info .email {
+            font-size: 16px;
+            margin-top: 4px;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .student-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .student-card img {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>รายชื่อนักศึกษา (List of Students)</h1>
+
+<div class="student-list">
+    {% for s in students %}
+    <div class="student-card">
+        <img src="https://testingbot.com/free-online-tools/random-avatar/200?img={{s.id}}" alt="Student photo">
+        <div class="student-info">
+            <div class="name">{{ loop.index }}. {{ s.name }}</div>
+            <div class="dob">วันเกิด: {{ s.dob }}</div>
+            <div class="email">อีเมล: {{ s.email }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
